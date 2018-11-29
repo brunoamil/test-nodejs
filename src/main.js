@@ -1,17 +1,83 @@
-"use strict";
+import axios from 'axios';
 
-//usando Object Short Syntax
-var nome = 'Diego';
-var idade = 23;
-var usuario = {
-  // quando voce tem o nome da mesma variavel, nao é necessario colocar nome: nome, voce omite.
-  nome: nome,
-  idade: idade,
-  empresa: 'Rocketseat'
-};
-console.log(usuario); //=============== comentarios de código anterior ==================
+class API {
+    static async getUserInfo(username){
+
+        try {
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            console.log(response);
+
+        } catch (err) {
+            console.warn('Erro na API');
+        }
+
+    }
+}
+
+API.getUserInfo('diego3sg');
+API.getUserInfo('diego3g');
+
+
+
+
+//=============== comentarios de código anterior ==================
+
+
 
 /*
+
+// EXEMPLO DE ASYNC/AWAIT
+
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => { resolve('OK')}, 2000);
+});
+
+
+// minhaPromise()
+// .then(response => {
+//     console.log(response);
+// });
+
+const executaPromise = async () => {
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+
+};
+
+executaPromise();
+
+async function executaPromise() {
+    const response = await minhaPromise();
+
+    console.log(response);
+}
+
+executaPromise();
+
+import soma, { sub} from '../funcoes';
+//import SomaFunction from './soma';
+
+console.log(soma(1,2));
+console.log(sub(4,2));
+
+// console.log()
+
+//usando Object Short Syntax
+
+const nome = 'Diego';
+const idade = 23;
+
+const usuario = {
+    
+    // quando voce tem o nome da mesma variavel, nao é necessario colocar nome: nome, voce omite.
+    nome,
+    idade,
+    empresa: 'Rocketseat'
+};
+
+console.log(usuario);
 // usando template literal
 
 const nome = 'Bruno';
@@ -204,3 +270,4 @@ document.getElementById('novotodo').onclick = function () {
  TodoList.addTodo();
  TodoList.addTodo();
  TodoList.addTodo();*/
+
